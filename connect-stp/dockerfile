@@ -1,0 +1,9 @@
+FROM centos:7
+ADD . /opt
+WORKDIR /opt
+RUN yum -y update && yum clean all && \
+    yum -y install $(cat packages_list.txt) && \
+    tar zxvf stp.tar.gz
+	
+ENTRYPOINT ["/opt/STP.sh"]
+
